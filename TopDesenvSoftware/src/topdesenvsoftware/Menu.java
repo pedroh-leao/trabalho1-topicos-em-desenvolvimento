@@ -217,36 +217,36 @@ public class Menu {
                     + "\n5- Listar alunos aprovados e reprovados em uma disciplina \n6- Sair");
             n = sNumero.nextInt();
             if(n>6 || n<0){
-                System.out.println("Digite um número válido");
-            }
-        }while(n>0 && n<=5);
-        
-        switch(n){
-            case 1:
-                System.out.println("Digite o curso correspondente a essa disciplina: ");
-                String nomeCurso = sString.nextLine();
-                Curso curso = null;
-                for(Curso c : cursos){
-                    if(c.getNome().equals(nomeCurso)){
-                        curso = c;
-                    }
+                System.out.println("Digite um número válido!");
+            }else{
+                switch(n){
+                    case 1:
+                        System.out.println("Digite o curso correspondente a essa disciplina: ");
+                        String nomeCurso = sString.nextLine();
+                        Curso curso = null;
+                        for(Curso c : cursos){
+                            if(c.getNome().equals(nomeCurso)){
+                                curso = c;
+                            }
+                        }
+                        cadastrarDisciplina(curso);
+                        break;
+                    case 2:
+                        cadastrarAluno();
+                        break;
+                    case 3:
+                        matricularAlunoEmDisciplina();
+                        break;
+                    case 4:
+                        registrarNota();
+                        break;
+                    case 5:
+                        listarAprovadosEReprovados();
+                        break;
+                    default:
+                        break;
                 }
-                cadastrarDisciplina(curso);
-                break;
-            case 2:
-                cadastrarAluno();
-                break;
-            case 3:
-                matricularAlunoEmDisciplina();
-                break;
-            case 4:
-                registrarNota();
-                break;
-            case 5:
-                listarAprovadosEReprovados();
-                break;
-            default:
-                break;
-        }
+            }
+        }while(n!=6);
     }
 }
